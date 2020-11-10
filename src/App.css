@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
 /* Global Styles */
 :root {
@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Oxygen', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -117,7 +117,7 @@ img {
   border-radius: 3px;
   box-shadow: 0 1.3px 2.3px rgba(0, 0, 0, 0.016),
     0 4.2px 7.8px rgba(0, 0, 0, 0.024), 0 19px 35px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(0, 0, 0, 0.04);
+    0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 /* List */
 .list {
@@ -386,6 +386,11 @@ table th {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
+}
+
+h1 .search-results-title {
+  opacity: 0.6;
+  font-weight: 400;
 }
 
 /* Mobile Styles */

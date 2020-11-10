@@ -13,7 +13,12 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
 
       <h2>{login}</h2>
       <div>
-        <a className='btn btn-dark btn-sm my-1' href={html_url}>
+        <a
+          className='btn btn-dark btn-sm my-1'
+          href={html_url}
+          target='_blank'
+          rel='noreferrer'
+        >
           Show repos
         </a>
       </div>
