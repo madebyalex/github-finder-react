@@ -28,7 +28,7 @@ const Navbar = (props) => {
             {props.title}
           </a>
 
-          {props.query && (
+          {props.showSubtitle && (
             <span className='search-results-title'>
               / {`${props.searchResults} "${props.query}"`}
             </span>

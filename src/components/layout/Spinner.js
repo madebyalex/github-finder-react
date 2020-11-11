@@ -77,10 +77,11 @@ function Spinner() {
 }
 
 const spinnerStyles = {
-  // color: 'var(--primary-color)',
   position: 'absolute',
   top: '50%',
   left: '50%',
+  transform: 'translateX(-5rem) translateY(-3rem)',
+  zIndex: 100,
   color: '#616466',
   display: 'flex',
   flexWrap: 'wrap',
@@ -89,8 +90,8 @@ const spinnerStyles = {
   height: '10rem',
   alignItems: 'center',
   justifyContent: 'center',
-  transform: 'translateX(-5rem) translateY(-5rem)',
   borderRadius: '5px',
+  backgroundColor: '#FFFFFF',
   boxShadow:
     '0 2.2px 3.6px rgba(0, 0, 0, 0.014), 0 6px 10px rgba(0, 0, 0, 0.02), 0 14.5px 24.1px rgba(0, 0, 0, 0.026), 0 48px 80px rgba(0, 0, 0, 0.04)',
 };

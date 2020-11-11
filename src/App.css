@@ -246,6 +246,8 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-primary,
@@ -395,6 +397,8 @@ h1 .search-results-title {
 
 .section-search {
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .alert-icon {

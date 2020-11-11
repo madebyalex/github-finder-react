@@ -34,7 +34,7 @@ class App extends Component {
   };
 
   clearUsers = () => {
-    this.setState({ users: [], loading: false });
+    this.setState({ users: [], loading: false, pageTitle: this.state.title });
   };
 
   setAlert = (msg, type) => {
@@ -62,6 +62,7 @@ class App extends Component {
           pageTitle={pageTitle}
           searchResults={searchResults}
           query={query}
+          showSubtitle={users.length > 0 ? true : false}
         />
         <div className='container'>
           <Search
