@@ -8,6 +8,8 @@ export class Search extends Component {
 
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired,
   };
 
   onChange = (e) => {
@@ -21,8 +23,10 @@ export class Search extends Component {
   };
 
   render() {
+    const { showClear, clearUsers } = this.props;
+
     return (
-      <div>
+      <section className='section-search'>
         <form className='form' onSubmit={this.onSubmit}>
           <input
             type='text'
@@ -37,7 +41,13 @@ export class Search extends Component {
             className='btn btn-dark btn-block'
           />
         </form>
-      </div>
+
+        {showClear && (
+          <button className='btn btn-light btn-block' onClick={clearUsers}>
+            Clear
+          </button>
+        )}
+      </section>
     );
   }
 }

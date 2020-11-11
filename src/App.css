@@ -393,6 +393,10 @@ h1 .search-results-title {
   font-weight: 400;
 }
 
+.section-search {
+  margin-bottom: 2rem;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {
