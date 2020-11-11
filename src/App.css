@@ -397,6 +397,11 @@ h1 .search-results-title {
   margin-bottom: 2rem;
 }
 
+.alert-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {

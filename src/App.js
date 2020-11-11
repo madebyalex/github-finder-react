@@ -5,6 +5,7 @@ import axios from 'axios';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import Alert from './components/layout/Alert';
 
 class App extends Component {
   state = {
@@ -14,16 +15,8 @@ class App extends Component {
     pageTitle: 'GitHub Finder',
     searchResults: 'Search results for ',
     query: '',
+    alert: null,
   };
-
-  // async componentDidMount() {
-  //   this.setState({ loading: true });
-  //   const res = await axios.get(
-  //     `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-  //   );
-
-  //   this.setState({ users: res.data, loading: false });
-  // }
 
   searchUsers = async (query) => {
     this.setState({ loading: true });
@@ -36,6 +29,7 @@ class App extends Component {
       loading: false,
       pageTitle: `${this.state.title} – ${this.state.searchResults} "${query}"`,
       query: `${query}"`,
+      alert: null,
     });
   };
 
@@ -43,22 +37,41 @@ class App extends Component {
     this.setState({ users: [], loading: false });
   };
 
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg: msg, type: type } });
+
+    setTimeout(() => {
+      this.setState({ alert: null });
+    }, 5000);
+  };
+
   render() {
+    const {
+      users,
+      loading,
+      title,
+      pageTitle,
+      query,
+      searchResults,
+    } = this.state;
+
     return (
       <div className='App'>
         <Navbar
-          title={this.state.title}
-          pageTitle={this.state.pageTitle}
-          searchResults={this.state.searchResults}
-          query={this.state.query}
+          title={title}
+          pageTitle={pageTitle}
+          searchResults={searchResults}
+          query={query}
         />
         <div className='container'>
           <Search
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers}
-            showClear={this.state.users.length > 0 ? true : false}
+            showClear={users.length > 0 ? true : false}
+            setAlert={this.setAlert}
           />
-          <Users loading={this.state.loading} users={this.state.users} />
+          <Alert alert={this.state.alert} />
+          <Users loading={loading} users={users} />
         </div>
       </div>
     );
