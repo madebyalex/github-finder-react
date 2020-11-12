@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PageTitle } from './components/layout/PageTitle';
 
 import About from './components/pages/About';
+import User from './components/users/User';
 
 // import './assets/main.css';
 import Navbar from './components/layout/Navbar';
@@ -21,6 +22,7 @@ class App extends Component {
     searchResults: 'Search results for ',
     query: '',
     alert: null,
+    user: {},
   };
 
   searchUsers = async (query) => {
@@ -35,6 +37,19 @@ class App extends Component {
       // pageTitle: `${this.state.title} – ${this.state.searchResults} "${query}"`,
       query: `${query}"`,
       alert: null,
+    });
+  };
+
+  getUser = async (username) => {
+    this.setState({ loading: true });
+
+    const res = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    this.setState({
+      user: res.data,
+      loading: false,
     });
   };
 
@@ -58,6 +73,7 @@ class App extends Component {
       // pageTitle,
       query,
       searchResults,
+      user,
     } = this.state;
 
     return (
@@ -103,6 +119,22 @@ class App extends Component {
               />
 
               {/* <Route exact path='/about' component={About} /> */}
+
+              <Route
+                exact
+                path='/user/:login'
+                render={(props) => (
+                  <Fragment>
+                    <PageTitle title='User info' />
+                    <User
+                      {...props}
+                      getUser={this.getUser}
+                      user={user}
+                      loading={loading}
+                    />
+                  </Fragment>
+                )}
+              />
             </Switch>
           </div>
         </div>
