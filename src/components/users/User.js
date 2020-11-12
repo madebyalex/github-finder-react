@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PageTitle } from '../layout/PageTitle';
 
 export class User extends Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ export class User extends Component {
 
     return (
       <div>
+        <PageTitle title={`Detail info about ${name}`} />
         <h1>{name}</h1>
       </div>
     );

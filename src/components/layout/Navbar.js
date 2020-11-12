@@ -9,7 +9,7 @@ const Navbar = (props) => {
     <>
       <nav className='navbar bg-primary'>
         <h1>
-          <a href='/'>
+          <Link to='/'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='24'
@@ -27,7 +27,7 @@ const Navbar = (props) => {
               </g>
             </svg>
             {props.title}
-          </a>
+          </Link>
 
           {props.showSubtitle && (
             <span className='search-results-title'>
