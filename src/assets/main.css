@@ -104,7 +104,7 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-
+button,
 input {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
@@ -117,7 +117,7 @@ input {
  * 1. Show the overflow in Edge.
  */
 
-
+button,
 input { /* 1 */
   overflow: visible;
 }
@@ -127,11 +127,16 @@ input { /* 1 */
  * 1. Remove the inheritance of text transform in Firefox.
  */
 
+button { /* 1 */
+  text-transform: none;
+}
+
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-
+button,
+[type="button"],
 [type="submit"] {
   -webkit-appearance: button;
 }
@@ -140,7 +145,8 @@ input { /* 1 */
  * Remove the inner border and padding in Firefox.
  */
 
-
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
@@ -150,7 +156,8 @@ input { /* 1 */
  * Restore the focus styles unset by the previous rule.
  */
 
-
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
@@ -188,9 +195,18 @@ input { /* 1 */
  * 2. Correct the outline style in Safari.
  */
 
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
@@ -232,14 +248,32 @@ input { /* 1 */
 
 h1,
 h2,
-h3 {
+h3,
+p {
   margin: 0;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
 }
 
 /**
  * Work around a Firefox/IE bug where the transparent `button` background
  * results in a loss of the default `button` focus styles.
  */
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 /**
  * Tailwind custom reset styles
@@ -314,6 +348,10 @@ input::placeholder {
   color: #a0aec0;
 }
 
+button {
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3 {
@@ -339,7 +377,7 @@ a {
  * normalize.css.
  */
 
-
+button,
 input {
   padding: 0;
   line-height: inherit;
@@ -421,8 +459,16 @@ img {
   margin-bottom: 0.25rem;
 }
 
+.static {
+  position: static;
+}
+
 .absolute {
   position: absolute;
+}
+
+.relative {
+  position: relative;
 }
 
 .text-center {

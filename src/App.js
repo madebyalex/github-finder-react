@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import './App.css';
-import axios from 'axios';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { PageTitle } from './components/layout/PageTitle';
+
+import About from './components/pages/About';
+
 // import './assets/main.css';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
 
+import './App.css';
+import axios from 'axios';
+
 class App extends Component {
   state = {
     users: [],
     loading: false,
     title: 'GitHub Finder',
-    pageTitle: 'GitHub Finder',
     searchResults: 'Search results for ',
     query: '',
     alert: null,
@@ -27,7 +32,7 @@ class App extends Component {
     this.setState({
       users: res.data.items,
       loading: false,
-      pageTitle: `${this.state.title} – ${this.state.searchResults} "${query}"`,
+      // pageTitle: `${this.state.title} – ${this.state.searchResults} "${query}"`,
       query: `${query}"`,
       alert: null,
     });
@@ -50,31 +55,58 @@ class App extends Component {
       users,
       loading,
       title,
-      pageTitle,
+      // pageTitle,
       query,
       searchResults,
     } = this.state;
 
     return (
-      <div className='App'>
-        <Navbar
-          title={title}
-          pageTitle={pageTitle}
-          searchResults={searchResults}
-          query={query}
-          showSubtitle={users.length > 0 ? true : false}
-        />
-        <div className='container'>
-          <Search
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers}
-            showClear={users.length > 0 ? true : false}
-            setAlert={this.setAlert}
+      <Router>
+        <div className='App'>
+          <Navbar
+            title={title}
+            // pageTitle={pageTitle}
+            searchResults={searchResults}
+            query={query}
+            showSubtitle={users.length > 0 ? true : false}
           />
-          <Alert alert={this.state.alert} />
-          <Users loading={loading} users={users} />
+          <div className='container'>
+            <Switch>
+              <Route
+                exact
+                path='/'
+                render={(props) => (
+                  <Fragment>
+                    <PageTitle title='GitHub Finder' />
+                    <Search
+                      searchUsers={this.searchUsers}
+                      clearUsers={this.clearUsers}
+                      showClear={users.length > 0 ? true : false}
+                      setAlert={this.setAlert}
+                    />
+
+                    <Users loading={loading} users={users} />
+                    <Alert alert={this.state.alert} />
+                  </Fragment>
+                )}
+              />
+
+              <Route
+                exact
+                path='/about'
+                render={(props) => (
+                  <Fragment>
+                    <PageTitle title='About this app' />
+                    <About />
+                  </Fragment>
+                )}
+              />
+
+              {/* <Route exact path='/about' component={About} /> */}
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
