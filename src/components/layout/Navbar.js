@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  // document.title = props.pageTitle;
-
   return (
     <>
       <nav className='navbar bg-primary'>
@@ -15,6 +13,7 @@ const Navbar = (props) => {
               width='24'
               height='24'
               viewBox='0 0 24 24'
+              role='presentation'
             >
               <title>logo-github</title>
               <g fill='#383838'>
@@ -31,7 +30,7 @@ const Navbar = (props) => {
 
           {props.showSubtitle && (
             <span className='search-results-title'>
-              / {`${props.searchResults} "${props.query}"`}
+              / {`Search results for "${props.query}"`}
             </span>
           )}
         </h1>
