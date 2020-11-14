@@ -4,6 +4,10 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Repos from '../repos/Repos';
+import IconCheckmarkCircle from '../icons/IconCheckmarkCircle';
+import IconCrossCircle from '../icons/IconCrossCircle';
+import Globe from '../icons/globe';
+import Notification69 from '../icons/notification-69';
 
 const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
   useEffect(() => {
@@ -52,37 +56,15 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
             Hireable:{' '}
             <span className='hireable-icon'>
               {hireable ? (
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  role='presentation'
-                >
-                  <title>c-check</title>
-                  <g fill='#00AA5E'>
-                    <path
-                      d='M12,0A12,12,0,1,0,24,12,12.035,12.035,0,0,0,12,0ZM10,17.414,4.586,12,6,10.586l4,4,8-8L19.414,8Z'
-                      fill='#00AA5E'
-                    ></path>
-                  </g>
-                </svg>
+                <>
+                  {/* <IconCheckmarkCircle color='#00AA5E' /> */}
+                  <Notification69 width='1.125rem' fill='#00AA5E' />
+                </>
               ) : (
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  role='presentation'
-                >
-                  <title>c-remove</title>
-                  <g fill='#FF5252'>
-                    <path
-                      d='M12,0A12,12,0,1,0,24,12,12.035,12.035,0,0,0,12,0Zm4.95,15.536L15.536,16.95,12,13.414,8.464,16.95,7.05,15.536,10.586,12,7.05,8.464,8.464,7.05,12,10.586,15.536,7.05,16.95,8.464,13.414,12Z'
-                      fill='#FF5252'
-                    ></path>
-                  </g>
-                </svg>
+                <>
+                  {/* <IconCrossCircle color='#FF5252' /> */}
+                  <Globe fill='#FF5252' width='1.125rem' />
+                </>
               )}
             </span>
           </p>

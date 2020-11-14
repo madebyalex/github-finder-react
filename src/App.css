@@ -416,9 +416,9 @@ h1 .search-results-title {
   margin-left: 0.25rem;
 }
 
-.hireable-icon svg {
+/* .hireable-icon svg {
   max-width: 1.15rem;
-}
+} */
 
 /* Mobile Styles */
 @media (max-width: 700px) {
